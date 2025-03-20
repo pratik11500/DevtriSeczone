@@ -25,14 +25,20 @@ pool.query(`
 `).catch(err => console.error('Error creating table:', err));
 
 app.post('/contact', async (req, res) => {
+  console.log('Received contact form submission:', req.body);
   const { name, email, message } = req.body;
   
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, error: 'All fields are required' });
+  }
+
   try {
-    await pool.query(
-      'INSERT INTO contacts (name, email, message) VALUES ($1, $2, $3)',
+    const result = await pool.query(
+      'INSERT INTO contacts (name, email, message) VALUES ($1, $2, $3) RETURNING id',
       [name, email, message]
     );
-    res.json({ success: true });
+    console.log('Successfully inserted contact:', result.rows[0]);
+    res.json({ success: true, id: result.rows[0].id });
   } catch (error) {
     console.error('Database error:', error);
     res.status(500).json({ success: false, error: 'Database error' });

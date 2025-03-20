@@ -203,11 +203,18 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       const submitButton = this.querySelector('button[type="submit"]');
       submitButton.disabled = true;
+      
       const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        message: this.message.value
+        name: this.name.value.trim(),
+        email: this.email.value.trim(),
+        message: this.message.value.trim()
       };
+
+      if (!formData.name || !formData.email || !formData.message) {
+        alert('Please fill in all fields');
+        submitButton.disabled = false;
+        return;
+      }
 
       try {
         const response = await fetch('/contact', {
