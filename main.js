@@ -197,6 +197,48 @@ document.addEventListener("DOMContentLoaded", function () {
     return re.test(email);
   }
 
+    // Updated contact form submission handler
+  document.querySelectorAll("#contact-form form").forEach((form) => {
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const formData = {
+        name: this.name.value,
+        email: this.email.value,
+        message: this.message.value
+      };
+
+      try {
+        const response = await fetch('/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        const popup = document.getElementById("popup-notification");
+
+        if (data.success) {
+          popup.textContent = "Message sent successfully!";
+          popup.style.backgroundColor = "#28a745";
+          this.reset();
+        } else {
+          popup.textContent = "Failed to send message";
+          popup.style.backgroundColor = "#dc3545";
+        }
+
+        popup.style.display = "block";
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 2000);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  });
+
+
   // Initialize Bootstrap tooltips
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
