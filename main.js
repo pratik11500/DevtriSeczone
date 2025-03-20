@@ -4,16 +4,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbarCollapse = document.querySelector(".navbar-collapse");
 
   if (navbarToggler) {
-    navbarToggler.addEventListener("click", function () {
+    navbarToggler.addEventListener("click", function (e) {
+      e.stopPropagation();
       navbarCollapse.classList.toggle("show");
     });
 
     // Close menu when clicking outside
     document.addEventListener("click", function (e) {
-      if (
-        !navbarCollapse.contains(e.target) &&
-        !navbarToggler.contains(e.target)
-      ) {
+      if (navbarCollapse.classList.contains("show") && 
+          !navbarCollapse.contains(e.target) && 
+          !navbarToggler.contains(e.target)) {
         navbarCollapse.classList.remove("show");
       }
     });
