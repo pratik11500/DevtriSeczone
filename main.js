@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
     // Contact form submission handler
-  document.querySelectorAll("#contact-form form, #contact-form form").forEach((form) => {
+  document.querySelectorAll("#contact-form form, #contactForm").forEach((form) => {
     form.addEventListener("submit", async function(e) {
       e.preventDefault();
       const formData = {
