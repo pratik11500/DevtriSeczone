@@ -41,20 +41,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".slide");
 
   function showSlides() {
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].classList.remove("active");
-    }
+    slides.forEach(slide => slide.style.left = "100%");
     slideIndex++;
     if (slideIndex > slides.length) {
       slideIndex = 1;
     }
-    slides[slideIndex - 1].classList.add("active");
-    setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    slides[slideIndex - 1].style.left = "0";
   }
 
   if (slides.length > 0) {
-    slides[0].classList.add("active");
-    setTimeout(showSlides, 3000);
+    slides[0].style.left = "0";
+    setInterval(showSlides, 3000); // Change slide every 3 seconds
   }
 
   // Lazy loading images
