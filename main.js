@@ -197,8 +197,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return re.test(email);
   }
 
-    // Updated contact form submission handler
-  document.querySelectorAll("#contact-form form").forEach((form) => {
+    // Contact form submission handler
+  document.querySelectorAll("#contact-form form, #contact-form form").forEach((form) => {
     form.addEventListener("submit", async function(e) {
       e.preventDefault();
       const formData = {
@@ -223,6 +223,12 @@ document.addEventListener("DOMContentLoaded", function () {
           popup.textContent = "Message sent successfully!";
           popup.style.backgroundColor = "#28a745";
           this.reset();
+          if (document.querySelector('.overlay')) {
+            document.querySelector('.overlay').style.display = "none";
+          }
+          if (document.querySelector('#contact-form')) {
+            document.querySelector('#contact-form').style.right = "-350px";
+          }
         } else {
           popup.textContent = "Failed to send message";
           popup.style.backgroundColor = "#dc3545";
