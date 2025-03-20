@@ -484,28 +484,68 @@
     </div>
 </footer>
 
-    <!-- Chat Bot -->
-    <div class="point-connection"></div>
-    <div class="chatbot-icon">
-    </div>
+    <!-- Chat Bot -->]
+    <div class="chatbot-icon"></div>
 
     <div class="chatbot-container">
         <div class="chatbot-header">
             <h5>How can I help you?</h5>
-            <button class="close-chat"></button>
+            <button class="close-chat">&times;</button>
         </div>
         <div class="chatbot-messages">
-            <div class="bot-message">
-                Please select an option:
-            </div>
+            <div class="bot-message">Please select an option:</div>
         </div>
-        <div class="chatbot-options">
-            <button class="chat-option" data-option="services">Our Services</button>
-            <button class="chat-option" data-option="contact">Contact Information</button>
-            <button class="chat-option" data-option="location">Office Location</button>
-            <button class="chat-option" data-option="hours">Working Hours</button>
-        </div>
+        <div class="typing-indicator">Bot is typing...</div>
     </div>
+
+    <script>
+        const chatbotIcon = document.querySelector(".chatbot-icon");
+        const chatbotContainer = document.querySelector(".chatbot-container");
+        const closeChat = document.querySelector(".close-chat");
+        const chatbotMessages = document.querySelector(".chatbot-messages");
+        const typingIndicator = document.querySelector(".typing-indicator");
+
+        chatbotIcon.addEventListener("click", () => chatbotContainer.style.display = "block");
+        closeChat.addEventListener("click", () => chatbotContainer.style.display = "none");
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = isUser ? "user-message" : "bot-message";
+            messageDiv.textContent = message;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function showOptions() {
+            setTimeout(() => {
+                typingIndicator.style.display = "none";
+                ["Our services", "Contact Information", "Office Location", "Working Hours"].forEach(option => {
+                    const btn = document.createElement("button");
+                    btn.className = "chat-option";
+                    btn.textContent = option;
+                    btn.addEventListener("click", () => {
+                        addMessage(btn.textContent, true);
+                        typingIndicator.style.display = "block";
+                        setTimeout(() => {
+                            typingIndicator.style.display = "none";
+                            addMessage(responses[option] || "Sorry, I don't have information on that.");
+                            showOptions();
+                        }, 1000);
+                    });
+                    chatbotMessages.appendChild(btn);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                });
+            }, 1000);
+        }
+
+        const responses = {
+            "Our services": "We offer security services, IT security, staffing, and payroll services.",
+            "Contact Information": "Reach us at: +91 78270 50067 | info.ds@devtriseczone.com",
+            "Office Location": "We are at: Shop/4, Panchdhapa Apt, Kalyan, Maharashtra, 421301",
+            "Working Hours": "Office Hours: Mon-Sat: 9:00 AM - 6:00 PM, Sun: Closed"
+        };
+        showOptions();
+    </script>
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/917827050067" class="whatsapp-float" target="_blank">
