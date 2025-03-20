@@ -42,19 +42,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showSlides() {
     slides.forEach(slide => {
-      slide.style.display = "none";
+      slide.style.opacity = "0";
       slide.classList.remove("active");
+      setTimeout(() => {
+        slide.style.display = "none";
+      }, 500);
     });
+    
     slideIndex++;
     if (slideIndex > slides.length) {
       slideIndex = 1;
     }
-    slides[slideIndex - 1].style.display = "block";
-    slides[slideIndex - 1].classList.add("active");
+    
+    const activeSlide = slides[slideIndex - 1];
+    activeSlide.style.display = "block";
+    setTimeout(() => {
+      activeSlide.style.opacity = "1";
+      activeSlide.classList.add("active");
+    }, 50);
   }
 
   if (slides.length > 0) {
     slides[0].style.display = "block";
+    slides[0].style.opacity = "1";
     slides[0].classList.add("active");
     setInterval(showSlides, 3000); // Change slide every 3 seconds
   }
