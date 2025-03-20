@@ -1328,7 +1328,7 @@ img[loading="lazy"].loaded {
 .chatbot-icon {
   position: fixed;
   bottom: 110px;
-  left: 39px;
+  right: 39px;
   width: 60px;
   height: 60px;
   background: #007bff;
@@ -1380,7 +1380,7 @@ img[loading="lazy"].loaded {
 .point-connection {
   position: fixed;
   bottom: 140px;
-  left: 69px;
+  right: 69px;
   width: 8px;
   height: 8px;
   background: #007bff;
@@ -1439,13 +1439,13 @@ img[loading="lazy"].loaded {
 .chatbot-container {
   position: fixed;
   bottom: 170px;
-  left: 20px;
+  right: 20px;
   width: 250px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   z-index: 999;
-  display: block;
+  display: none;
   overflow: hidden;
   transition: all 0.3s ease;
 }
