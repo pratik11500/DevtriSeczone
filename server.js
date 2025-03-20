@@ -32,8 +32,10 @@ app.post('/contact', async (req, res) => {
     return res.status(400).json({ success: false, error: 'All fields are required' });
   }
 
+  let client;
   try {
-    const result = await pool.query(
+    client = await pool.connect();
+    const result = await client.query(
       'INSERT INTO contacts (name, email, message) VALUES ($1, $2, $3) RETURNING id',
       [name, email, message]
     );
@@ -41,7 +43,14 @@ app.post('/contact', async (req, res) => {
     res.json({ success: true, id: result.rows[0].id });
   } catch (error) {
     console.error('Database error:', error);
-    res.status(500).json({ success: false, error: 'Database error' });
+    res.status(500).json({ 
+      success: false, 
+      error: 'Database error: ' + (error.message || 'Unknown error')
+    });
+  } finally {
+    if (client) {
+      client.release();
+    }
   }
 });
 

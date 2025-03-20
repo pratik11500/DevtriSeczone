@@ -205,9 +205,9 @@ document.addEventListener("DOMContentLoaded", function () {
       submitButton.disabled = true;
       
       const formData = {
-        name: this.name.value.trim(),
-        email: this.email.value.trim(),
-        message: this.message.value.trim()
+        name: this.querySelector('[name="name"]').value.trim(),
+        email: this.querySelector('[name="email"]').value.trim(),
+        message: this.querySelector('[name="message"]').value.trim()
       };
 
       if (!formData.name || !formData.email || !formData.message) {
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const popup = document.getElementById("popup-notification");
 
         if (data.success) {
-          console.log('Form submitted successfully');
+          console.log('Form submitted successfully:', data);
           popup.textContent = "Message sent successfully!";
           popup.style.backgroundColor = "#28a745";
           this.reset();
@@ -240,6 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector('#contact-form').style.right = "-350px";
           }
         } else {
+          console.error('Submission failed:', data.error);
           popup.textContent = "Failed to send message";
           popup.style.backgroundColor = "#dc3545";
         }
@@ -250,6 +251,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 2000);
       } catch (error) {
         console.error('Error:', error);
+        submitButton.disabled = false;
+      } finally {
+        submitButton.disabled = false;
       }
     });
   });
