@@ -201,6 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll("#contact-form form, #contactForm").forEach((form) => {
     form.addEventListener("submit", async function(e) {
       e.preventDefault();
+      const submitButton = this.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
       const formData = {
         name: this.name.value,
         email: this.email.value,
@@ -220,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const popup = document.getElementById("popup-notification");
 
         if (data.success) {
+          console.log('Form submitted successfully');
           popup.textContent = "Message sent successfully!";
           popup.style.backgroundColor = "#28a745";
           this.reset();
