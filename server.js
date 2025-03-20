@@ -34,12 +34,25 @@ app.post('/contact', async (req, res) => {
 
   let client;
   try {
+    // Ensure table exists
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS contacts (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
     client = await pool.connect();
+    console.log('Connected to database');
     const result = await client.query(
       'INSERT INTO contacts (name, email, message) VALUES ($1, $2, $3) RETURNING id',
       [name, email, message]
     );
     console.log('Successfully inserted contact:', result.rows[0]);
+    console.log('Insert successful:', result.rows[0]);
     res.json({ success: true, id: result.rows[0].id });
   } catch (error) {
     console.error('Database error:', error);
@@ -49,8 +62,22 @@ app.post('/contact', async (req, res) => {
     });
   } finally {
     if (client) {
-      client.release();
+      try {
+        client.release();
+        console.log('Database connection released');
+      } catch (e) {
+        console.error('Error releasing client:', e);
+      }
     }
+  }
+});
+
+// Test database connection on startup
+pool.query('SELECT NOW()', (err, res) => {
+  if (err) {
+    console.error('Database connection failed:', err);
+  } else {
+    console.log('Database connected successfully');
   }
 });
 

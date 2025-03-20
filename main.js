@@ -217,10 +217,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
+        console.log('Sending form data:', formData);
         const response = await fetch('/contact', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
           body: JSON.stringify(formData)
         });
