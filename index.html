@@ -87,12 +87,24 @@
 
 <!-- Contact Form -->
 <div id="contact-form">
-    <form method="POST">
-        <input type="hidden" name="csrf_token" value="ImEwNTBhZjFlMmIxZjgwZDRmYjQ4YWU5MThjMDY1ZmI3YzFmMDIyYmMi.Z9xmSg.09jNvSz6FPozS64TkfDZkoVLo90"/>
-        <input type="text" id="name" name="name" placeholder="Full Name*" required>
-        <input type="email" id="email" name="email" placeholder="Email Address*" required>
-        <textarea id="message" name="message" placeholder="Your Message*" required></textarea>
-        <button type="submit">Submit</button>
+    <form
+      action="https://formspree.io/f/mrbppzan"
+      method="POST"
+    >
+        <label>
+            Your Name:
+            <textarea name="Name"></textarea>
+          </label>
+      <label>
+        Your email:
+        <input type="email" name="email">
+      </label>
+      <label>
+        Your message:
+        <textarea name="message"></textarea>
+      </label>
+      <!-- your other form fields go here -->
+      <button type="submit">Send</button>
     </form>
 </div>
 
