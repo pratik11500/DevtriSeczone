@@ -1440,7 +1440,7 @@ img[loading="lazy"].loaded {
   position: fixed;
   bottom: 170px;
   right: 20px;
-  width: 300px;
+  width: 250px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);

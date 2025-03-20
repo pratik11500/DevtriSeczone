@@ -43,6 +43,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const chatbotMessages = document.querySelector(".chatbot-messages");
   const chatOptions = document.querySelectorAll(".chat-option");
 
+  // Handle chatbot open/close
+  chatbotIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    chatbotContainer.style.display = chatbotContainer.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!chatbotContainer.contains(e.target) && !chatbotIcon.contains(e.target)) {
+      chatbotContainer.style.display = "none";
+    }
+  });
+
+  chatbotContainer.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  closeChat.addEventListener("click", () => {
+    chatbotContainer.style.display = "none";
+  });
+
   function addMessage(message, isUser = false) {
     const messageDiv = document.createElement("div");
     messageDiv.className = isUser ? "user-message" : "bot-message";
