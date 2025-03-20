@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Handle chatbot open/close
   chatbotIcon.addEventListener("click", (e) => {
     e.stopPropagation();
-    chatbotContainer.style.display = chatbotContainer.style.display === "block" ? "none" : "block";
+    chatbotContainer.style.display = "block";
   });
 
   document.addEventListener("click", (e) => {
