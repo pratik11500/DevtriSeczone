@@ -36,20 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Slideshow functionality
-  let slideIndex = 0;
-  const slides = document.querySelectorAll(".slide");
-
-  function showSlides() {
-    slides.forEach(slide => slide.style.display = "none");
-    slideIndex = (slideIndex + 1) % slides.length;
-    slides[slideIndex].style.display = "block";
-  }
-
-  if (slides.length > 0) {
-    slides[0].style.display = "block";
-    setInterval(showSlides, 3000);
-  }
 
   // Lazy loading images
   const lazyImages = document.querySelectorAll('img[loading="lazy"]');
@@ -205,3 +191,49 @@ document.addEventListener("DOMContentLoaded", function () {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 });
+
+// Slideshow functionality
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlides() {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].classList.add('active');
+    setTimeout(showSlides, 3000); // Change slide every 3 seconds
+}
+
+if (slides.length > 0) {
+    slides[0].classList.add('active');
+    setTimeout(showSlides, 3000);
+}
+
+// Lazy loading images
+const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => {
+        // Store original src in data-src
+        if (!img.dataset.src) {
+            img.dataset.src = img.src;
+            img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // Transparent placeholder
+        }
+        imageObserver.observe(img);
+    });
+}
