@@ -1,6 +1,9 @@
 async function updateVisitorCount() {
   try {
     const response = await fetch('/visitor-count');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
     const data = await response.json();
     const visitorCountElement = document.querySelector('.visitor-counter span');
     if (visitorCountElement) {
@@ -10,6 +13,9 @@ async function updateVisitorCount() {
     console.error('Error updating visitor count:', err);
   }
 }
+
+// Update visitor count immediately and every 30 seconds
+setInterval(updateVisitorCount, 30000);
 
 document.addEventListener("DOMContentLoaded", function () {
   // Update visitor count when page loads

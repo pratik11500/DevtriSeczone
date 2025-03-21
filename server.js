@@ -45,8 +45,8 @@ app.get('/visitor-count', async (req, res) => {
     const client = await pool.connect();
     try {
       await client.query('BEGIN');
-      await client.query('UPDATE visitors SET count = count + 1');
-      const result = await client.query('SELECT count FROM visitors');
+      await client.query('UPDATE visitors SET count = count + 1 WHERE id = 1');
+      const result = await client.query('SELECT count FROM visitors WHERE id = 1');
       await client.query('COMMIT');
       res.json({ count: result.rows[0].count });
     } catch (err) {
