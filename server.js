@@ -13,16 +13,53 @@ const pool = new Pool({
   connectionString: 'postgresql://neondb_owner:npg_K7DRc6FhPmBw@ep-falling-cherry-a5hjfny7-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'
 });
 
-// Create contacts table if it doesn't exist
-pool.query(`
-  CREATE TABLE IF NOT EXISTS contacts (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    message TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  )
-`).catch(err => console.error('Error creating table:', err));
+// Create tables if they don't exist
+Promise.all([
+  pool.query(`
+    CREATE TABLE IF NOT EXISTS contacts (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(100) NOT NULL,
+      email VARCHAR(100) NOT NULL,
+      message TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `),
+  pool.query(`
+    CREATE TABLE IF NOT EXISTS visitors (
+      id SERIAL PRIMARY KEY,
+      count INTEGER DEFAULT 0
+    )
+  `).then(() => {
+    // Insert initial count if table is empty
+    return pool.query(`
+      INSERT INTO visitors (count)
+      SELECT 0
+      WHERE NOT EXISTS (SELECT 1 FROM visitors)
+    `);
+  })
+]).catch(err => console.error('Error creating tables:', err));
+
+// Add route to get and update visitor count
+app.get('/visitor-count', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    try {
+      await client.query('BEGIN');
+      await client.query('UPDATE visitors SET count = count + 1');
+      const result = await client.query('SELECT count FROM visitors');
+      await client.query('COMMIT');
+      res.json({ count: result.rows[0].count });
+    } catch (err) {
+      await client.query('ROLLBACK');
+      throw err;
+    } finally {
+      client.release();
+    }
+  } catch (err) {
+    console.error('Error updating visitor count:', err);
+    res.status(500).json({ error: 'Failed to update visitor count' });
+  }
+});
 
 app.post('/contact', async (req, res) => {
   console.log('Received contact form submission:', req.body);

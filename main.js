@@ -1,4 +1,19 @@
+async function updateVisitorCount() {
+  try {
+    const response = await fetch('/visitor-count');
+    const data = await response.json();
+    const visitorCountElement = document.querySelector('.visitor-counter span');
+    if (visitorCountElement) {
+      visitorCountElement.textContent = `${data.count} Visitors`;
+    }
+  } catch (err) {
+    console.error('Error updating visitor count:', err);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  // Update visitor count when page loads
+  updateVisitorCount();
   // Navbar toggle behavior
   const navbarToggler = document.querySelector(".navbar-toggler");
   const navbarCollapse = document.querySelector(".navbar-collapse");
