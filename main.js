@@ -258,3 +258,4 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
+
