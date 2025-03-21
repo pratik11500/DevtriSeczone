@@ -245,7 +245,7 @@ body {
 
 .hero-overlay {
     position: absolute;
-    top: 60px;
+    top: 53px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -637,7 +637,7 @@ body {
   }
 
   .hero-overlay {
-    height: 35vh;
+    height: 40vh;
   }
 
   .hero .container {
