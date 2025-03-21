@@ -1344,6 +1344,27 @@ img[loading="lazy"].loaded {
     transform: scale(1.1);
 }
 
+.chatbot-icon::before {
+  content: "Can I help you?";
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 2s infinite;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
 .chatbot-container {
     position: fixed;
     bottom: 90px;
