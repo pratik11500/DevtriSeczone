@@ -409,58 +409,6 @@
     </div>
 </section>
 
-<!-- Add popup notification div -->
-<div class="popup-notification" id="popup-notification">Message sent successfully!</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Handle contact form submission
-        const contactFormElement = document.querySelector("#contact-form form");
-        if (contactFormElement) {
-            contactFormElement.addEventListener("submit", function(e) {
-                const popup = document.getElementById("popup-notification");
-                setTimeout(() => {
-                    popup.style.display = "block";
-                    setTimeout(() => {
-                        popup.style.display = "none";
-                    }, 2000);
-                }, 100);
-            });
-        }
-        
-        const contactButton = document.getElementById("contact-button");
-        const contactForm = document.getElementById("contact-form");
-        const overlay = document.getElementById("overlay");
-
-        // Toggle Contact Form
-        contactButton.addEventListener("click", function () {
-            contactForm.style.right = "0px";
-            overlay.style.display = "block";
-        });
-
-        // Close when clicking outside
-        overlay.addEventListener("click", function () {
-            contactForm.style.right = "-350px";
-            overlay.style.display = "none";
-        });
-
-        // Close when pressing Escape key
-        document.addEventListener("keydown", function(e) {
-            if (e.key === "Escape") {
-                contactForm.style.right = "-350px";
-                overlay.style.display = "none";
-            }
-        });
-
-        // Prevent form from closing when clicking inside it
-        contactForm.addEventListener("click", function(e) {
-            e.stopPropagation();
-        });
-    });
-</script>
-
-
-
     <footer class="footer bg-dark text-light py-5">
     <div class="container">
         <div class="row">
