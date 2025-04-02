@@ -339,6 +339,20 @@ body {
     padding-top: 250px;
 }
 
+@media (min-width: 992px) {
+    .hero .col-lg-8 h1,
+    .hero .col-lg-8 p {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero .col-lg-8 h1,
+    .hero .col-lg-8 p {
+        display: block;
+    }
+}
+
 .hero h1 {
     font-size: 4rem;
     font-weight: 700;
