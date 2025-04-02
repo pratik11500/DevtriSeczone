@@ -341,7 +341,8 @@ body {
 
 @media (min-width: 992px) {
     .hero .col-lg-8 {
-        padding-top: 100px;
+        padding-top: 250px;
+      padding-left: 70px;
     }
 }
 
