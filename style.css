@@ -340,9 +340,6 @@ body {
 }
 
 @media (min-width: 992px) {
-    .hero .col-lg-8 {
-        padding-top: 50px;
-    }
     .hero .col-lg-8 h1,
     .hero .col-lg-8 p {
         display: none;
