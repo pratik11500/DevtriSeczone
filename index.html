@@ -68,10 +68,6 @@
     </div>
 
 
-
-
-
-
 <!-- Hero Section with Slideshow -->
 <section id="home" class="hero">
     <div class="slide-container">
@@ -443,6 +439,40 @@
         </div>
     </div>
 </footer>
+
+
+    <!-- Help_bot -->
+    <div class="help-bot-container">
+        <div class="help-bot-icon" id="helpBotIcon">
+            <i class="fas fa-headset"></i>
+        </div>
+        <div class="help-bot-chat" id="helpBotChat">
+            <div class="help-bot-header">
+                <h3>Devtri Support</h3>
+                <button id="closeHelpBot"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="help-bot-messages" id="helpBotMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hello! I'm your virtual assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="help-bot-input">
+                <div class="quick-questions">
+                    <button class="quick-question-btn" data-question="What services do you offer?">What services do you offer?</button>
+                    <button class="quick-question-btn" data-question="How can I contact support?">How can I contact support?</button>
+                    <button class="quick-question-btn" data-question="Do you offer security audits?">Do you offer security audits?</button>
+                </div>
+                <div class="help-bot-input-field">
+                    <input type="text" id="helpBotInput" placeholder="Type your question here...">
+                    <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/helpbot.js"></script>
 
     
 
