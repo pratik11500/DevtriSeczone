@@ -444,58 +444,7 @@
     </div>
 </footer>
 
-    <!-- Chat Bot -->
-    <div class="chatbot-icon"></div>
-    <div class="chatbot-container">
-        <div class="chatbot-header">
-            <h5>How can I help you?</h5>
-            <button class="close-chat">&times;</button>
-        </div>
-        <div class="chatbot-messages">
-            <div class="bot-message">Hi! How can I help you today?</div>
-        </div>
-        <div class="typing-indicator">Bot is typing...</div>
-        <div class="chatbot-input">
-            <input type="text" placeholder="Type your message..." id="chat-input">
-            <button id="send-message"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-
-    <script>
-        const chatbotIcon = document.querySelector(".chatbot-icon");
-        const chatbotContainer = document.querySelector(".chatbot-container");
-        const closeChat = document.querySelector(".close-chat");
-        const chatbotMessages = document.querySelector(".chatbot-messages");
-        const typingIndicator = document.querySelector(".typing-indicator");
-        const chatInput = document.getElementById("chat-input");
-        const sendMessageButton = document.getElementById("send-message");
-
-        chatbotIcon.addEventListener("click", () => chatbotContainer.style.display = "block");
-        closeChat.addEventListener("click", () => chatbotContainer.style.display = "none");
-
-        function addMessage(message, isUser = false) {
-            const messageDiv = document.createElement("div");
-            messageDiv.className = isUser ? "user-message" : "bot-message";
-            messageDiv.textContent = message;
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        sendMessageButton.addEventListener("click", () => {
-            const userMessage = chatInput.value;
-            if (userMessage.trim() !== "") {
-                addMessage(userMessage, true);
-                chatInput.value = "";
-                // Add your AI response logic here.  For example:
-                typingIndicator.style.display = "block";
-                setTimeout(() => {
-                    typingIndicator.style.display = "none";
-                    addMessage("This is a placeholder AI response to: " + userMessage);
-                }, 1000);
-            }
-        });
-
-    </script>
+    
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/917827050067" class="whatsapp-float" target="_blank">
