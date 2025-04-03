@@ -8,6 +8,7 @@ const app = express();
 app.use(express.static('./'));
 app.use(bodyParser.json());
 
+const { OpenAI } = require('openai');
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
