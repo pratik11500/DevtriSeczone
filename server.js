@@ -7,6 +7,24 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(express.static('./'));
 app.use(bodyParser.json());
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
+
+app.post('/chat', async (req, res) => {
+  try {
+    const { message } = req.body;
+    const completion = await openai.chat.completions.create({
+      messages: [{ role: "user", content: message }],
+      model: "gpt-3.5-turbo",
+    });
+    res.json({ reply: completion.choices[0].message.content });
+  } catch (error) {
+    console.error('OpenAI API error:', error);
+    res.status(500).json({ error: 'Failed to get AI response' });
+  }
+});
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const pool = new Pool({
