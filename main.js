@@ -276,29 +276,32 @@ document.addEventListener('DOMContentLoaded', function() {
   const chatbotMessages = document.getElementById('chatbot-messages');
   const typingIndicator = document.getElementById('typing-indicator');
 
-  // Initialize bot state
-  let isBotVisible = false;
+  botContainer.style.display = 'none';
+  let isBotOpen = false;
 
-  // Toggle bot visibility
   function toggleBot() {
-    isBotVisible = !isBotVisible;
-    botContainer.style.display = isBotVisible ? 'block' : 'none';
+    isBotOpen = !isBotOpen;
+    botContainer.style.display = isBotOpen ? 'block' : 'none';
+    if (isBotOpen) {
+      chatInput.focus();
+      botContainer.classList.add('show');
+    } else {
+      botContainer.classList.remove('show');
+    }
   }
 
-  // Event listeners
-  botToggle.addEventListener('click', function(e) {
+  botToggle.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
     toggleBot();
   });
 
-  closeBot.addEventListener('click', function() {
+  closeBot.addEventListener('click', () => {
     toggleBot();
   });
 
-  // Close bot when clicking outside
-  document.addEventListener('click', function(e) {
-    if (isBotVisible && !botContainer.contains(e.target) && !botToggle.contains(e.target)) {
+  document.addEventListener('click', (e) => {
+    if (isBotOpen && !botContainer.contains(e.target) && !botToggle.contains(e.target)) {
       toggleBot();
     }
   });
