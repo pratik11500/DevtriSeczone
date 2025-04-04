@@ -1151,7 +1151,7 @@ section p.text-center {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #007bff;
+  background: none;
   border: none;
   cursor: pointer;
   display: flex;
@@ -1159,6 +1159,8 @@ section p.text-center {
   justify-content: center;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
+  padding: 0;
+  overflow: hidden;
 }
 
 .bot-toggle img {
@@ -1166,6 +1168,7 @@ section p.text-center {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  display: block;
 }
 
 .bot-toggle:hover {
