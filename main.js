@@ -277,11 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const typingIndicator = document.getElementById('typing-indicator');
 
   botToggle.addEventListener('click', () => {
-    if (botContainer.style.display === 'none' || !botContainer.style.display) {
-      botContainer.style.display = 'block';
-    } else {
-      botContainer.style.display = 'none';
-    }
+    botContainer.style.display = 'block';
   });
 
   closeBot.addEventListener('click', () => {
