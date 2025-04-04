@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
   botToggle.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    botContainer.style.display = 'block';
+    botContainer.classList.toggle('show');
   });
 
   closeBot.addEventListener('click', () => {

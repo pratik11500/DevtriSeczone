@@ -1178,13 +1178,20 @@ section p.text-center {
 .bot-container {
   position: fixed;
   bottom: 80px;
-  right: 40px;
+  left: 40px;
   width: 300px;
   background: var(--card-bg);
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   display: none;
   z-index: 9999;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.bot-container.show {
+  transform: translateX(0);
+  display: block;
 }
 
 .bot-header {
