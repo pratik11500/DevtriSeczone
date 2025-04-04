@@ -1184,6 +1184,7 @@ section p.text-center {
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   display: none;
+  z-index: 9999;
 }
 
 .bot-header {

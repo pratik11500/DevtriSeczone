@@ -276,9 +276,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const chatbotMessages = document.getElementById('chatbot-messages');
   const typingIndicator = document.getElementById('typing-indicator');
 
-  botToggle.addEventListener('click', () => {
-    botContainer.style.display = 'block';
-  });
+  botToggle.addEventListener('click', function() {
+    if (botContainer.style.display === 'none' || !botContainer.style.display) {
+        botContainer.style.display = 'block';
+    }
+});
 
   closeBot.addEventListener('click', () => {
     botContainer.style.display = 'none';
