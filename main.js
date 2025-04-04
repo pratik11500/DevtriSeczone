@@ -84,19 +84,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Contact toggle functionality
-  const contactToggle = document.querySelector(".contact-toggle");
-  const contactOptions = document.querySelector(".contact-options");
+  // Contact toggle behavior
+  const contactButton = document.getElementById('contact-button');
+  const contactForm = document.getElementById('contact-form');
+  const overlay = document.getElementById('overlay');
 
-  if (contactToggle) {
-    contactToggle.addEventListener("mouseenter", function () {
-      contactOptions.classList.add("show");
-    });
-
-    contactToggle.addEventListener("mouseleave", function () {
-      contactOptions.classList.remove("show");
+  if (contactButton) {
+    contactButton.addEventListener('click', function() {
+      contactForm.style.right = contactForm.style.right === '0px' ? '-350px' : '0px';
+      overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
     });
   }
+
+  if (overlay) {
+    overlay.addEventListener('click', function() {
+      contactForm.style.right = '-350px';
+      overlay.style.display = 'none';
+    });
+  }
+
 
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -113,9 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Form validation
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
+  const contactForm2 = document.getElementById("contactForm");
+  if (contactForm2) {
+    contactForm2.addEventListener("submit", function (e) {
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
