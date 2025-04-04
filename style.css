@@ -1151,8 +1151,8 @@ section p.text-center {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: none;
-  border: none;
+  background: #fff;
+  border: 2px solid #007bff;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1173,6 +1173,7 @@ section p.text-center {
 
 .bot-toggle:hover {
   transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,123,255,0.3);
 }
 
 .bot-container {
@@ -1180,14 +1181,12 @@ section p.text-center {
   bottom: 80px;
   left: 40px;
   width: 300px;
-  background: var(--card-bg);
+  background: #1a1a1a;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  border: 1px solid #007bff;
   display: none;
   z-index: 9999;
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: all 0.3s ease-in-out;
 }
 
 .bot-container.show {

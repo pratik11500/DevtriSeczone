@@ -444,13 +444,18 @@
 
     <!-- Help Bot -->
     <div class="help-bot">
-        <div class="bot-container" id="bot-container">
+        <button class="bot-toggle" id="bot-toggle">
+            <img src="/static/images/bot-icon.jpg" alt="Chat Bot">
+        </button>
+        <div class="bot-container" id="bot-container" style="display: none;">
             <div class="bot-header">
                 <img src="/static/images/bot-icon.jpg" alt="Bot Icon">
                 <span>Help Assistant</span>
                 <button class="close-bot" id="close-bot">&times;</button>
             </div>
-            <div class="bot-messages" id="chatbot-messages"></div>
+            <div class="bot-messages" id="chatbot-messages">
+                <div class="bot-message">Hello! How can I help you today?</div>
+            </div>
             <div class="typing-indicator" id="typing-indicator">
                 <span></span>
                 <span></span>
@@ -461,9 +466,6 @@
                 <button id="send-message"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
-        <button class="bot-toggle" id="bot-toggle">
-            <img src="/static/images/bot-icon.jpg" alt="Chat Bot">
-        </button>
     </div>
 
     <!-- WhatsApp Float Button -->
