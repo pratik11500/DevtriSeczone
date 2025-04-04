@@ -1345,7 +1345,7 @@ img[loading="lazy"].loaded {
 /* Floating Contact Button */
 #contact-button {
   position: fixed;
-  right: 20px;
+  right: -50px;
   top: 50%;
   background: var(--primary-color);
   color: white;
@@ -1729,6 +1729,65 @@ img[loading="lazy"].loaded {
     background: #2a2a2a;
     color: white;
 }
+
+/* Bot Input Container */
+.bot-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Bot Input Field */
+.bot-input input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background: #2a2a2a;
+    color: white;
+    width: 100%;  /* Ensures input takes available space */
+    min-width: 50px; /* Prevents it from shrinking too much */
+}
+
+/* Send Button */
+.bot-input button {
+    background: #007bff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Send Button Hover Effect */
+.bot-input button:hover {
+    background: #0056b3;
+}
+
+/* Fix for Mobile Screens */
+@media (max-width: 480px) {
+    .bot-input {
+        flex-wrap: nowrap; /* Keep everything in one line */
+    }
+
+    .bot-input input {
+        width: 100%; /* Ensures input remains properly sized */
+        min-width: unset;
+    }
+
+    .bot-input button {
+        width: 40px; /* Keeps button size consistent */
+        height: 40px;
+    }
+}
+
 
 .bot-input button {
     background: #007bff;
