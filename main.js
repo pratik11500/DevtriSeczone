@@ -279,11 +279,17 @@ document.addEventListener('DOMContentLoaded', function() {
   botToggle.addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    botContainer.classList.toggle('show');
+    botContainer.style.display = 'block';
+    setTimeout(() => {
+      botContainer.classList.add('show');
+    }, 10);
   });
 
   closeBot.addEventListener('click', () => {
-    botContainer.style.display = 'none';
+    botContainer.classList.remove('show');
+    setTimeout(() => {
+      botContainer.style.display = 'none';
+    }, 300);
   });
 
   async function sendMessage(message) {
