@@ -88,46 +88,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactButton = document.getElementById('contact-button');
   const contactForm = document.getElementById('contact-form');
   const overlay = document.getElementById('overlay');
-  const sideContactForm = document.getElementById('sideContactForm');
-
-  function toggleContactForm() {
-    const isOpen = contactForm.style.right === '0px';
-    contactForm.style.right = isOpen ? '-350px' : '0px';
-    overlay.style.display = isOpen ? 'none' : 'block';
-  }
 
   if (contactButton) {
-    contactButton.addEventListener('click', toggleContactForm);
+    contactButton.addEventListener('click', function() {
+      contactForm.style.right = contactForm.style.right === '0px' ? '-350px' : '0px';
+      overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+    });
   }
 
   if (overlay) {
-    overlay.addEventListener('click', toggleContactForm);
-  }
-
-  if (sideContactForm) {
-    sideContactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const submitBtn = sideContactForm.querySelector('button');
-      submitBtn.disabled = true;
-      
-      try {
-        const response = await fetch(sideContactForm.action, {
-          method: 'POST',
-          body: new FormData(sideContactForm)
-        });
-        
-        if (response.ok) {
-          alert('Message sent successfully!');
-          sideContactForm.reset();
-          toggleContactForm();
-        } else {
-          throw new Error('Failed to send message');
-        }
-      } catch (error) {
-        alert('Failed to send message. Please try again.');
-      } finally {
-        submitBtn.disabled = false;
-      }
+    overlay.addEventListener('click', function() {
+      contactForm.style.right = '-350px';
+      overlay.style.display = 'none';
     });
   }
 
