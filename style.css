@@ -1139,169 +1139,6 @@ section p.text-center {
   transform: scale(1.2);
 }
 
-/* Help Bot Styles */
-.help-bot {
-  position: fixed;
-  bottom: 110px;
-  right: 40px;
-  z-index: 1000;
-}
-
-.bot-toggle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #fff;
-  border: 2px solid #007bff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  padding: 0;
-  overflow: hidden;
-}
-
-.bot-toggle img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
-.bot-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 5px 15px rgba(0,123,255,0.3);
-}
-
-.bot-container {
-  position: fixed;
-  bottom: 80px;
-  left: 40px;
-  width: 300px;
-  background: #1a1a1a;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-  border: 1px solid #007bff;
-  display: none;
-  z-index: 9999;
-}
-
-.bot-container.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.bot-header {
-  padding: 15px;
-  background: #007bff;
-  border-radius: 15px 15px 0 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.bot-header img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.bot-header span {
-  color: white;
-  font-weight: 500;
-  flex-grow: 1;
-}
-
-.close-bot {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.bot-messages {
-  height: 300px;
-  overflow-y: auto;
-  padding: 15px;
-}
-
-.user-message, .bot-message {
-  margin: 10px 0;
-  padding: 10px 15px;
-  border-radius: 15px;
-  max-width: 80%;
-  word-wrap: break-word;
-}
-
-.user-message {
-  background: #007bff;
-  color: white;
-  margin-left: auto;
-}
-
-.bot-message {
-  background: #2a2a2a;
-  color: white;
-  margin-right: auto;
-}
-
-.bot-input {
-  padding: 15px;
-  display: flex;
-  gap: 10px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.bot-input input {
-  flex-grow: 1;
-  padding: 8px 15px;
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  background: #2a2a2a;
-  color: white;
-}
-
-.bot-input button {
-  background: #007bff;
-  border: none;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.bot-input button:hover {
-  background: #0056b3;
-}
-
-.typing-indicator {
-  display: none;
-  padding: 10px 15px;
-}
-
-.typing-indicator span {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #007bff;
-  border-radius: 50%;
-  margin-right: 5px;
-  animation: typing 1s infinite;
-}
-
-.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes typing {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
 
 .whatsapp-float {
   position: fixed;
@@ -1760,4 +1597,183 @@ img[loading="lazy"].loaded {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Help Bot Styles */
+.help-bot {
+    position: fixed;
+    bottom: 110px;
+    right: 40px;
+    z-index: 1000;
+}
+
+.bot-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #007bff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bot-toggle img {
+  width: auto; 
+  height: 105%; 
+  border-radius: 50%; 
+  object-fit: cover;
+  display: block;
+}
+
+.bot-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.bot-container {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    width: 320px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid #007bff;
+    display: none;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.bot-container.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.bot-header {
+    padding: 15px;
+    background: #007bff;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bot-header img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.bot-header span {
+    color: white;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.close-bot {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.bot-messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-message,
+.bot-message {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+.user-message {
+    background: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background: #2a2a2a;
+    color: white;
+    align-self: flex-start;
+}
+
+.bot-input {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bot-input input {
+    flex-grow: 1;
+    padding: 8px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background: #2a2a2a;
+    color: white;
+}
+
+.bot-input button {
+    background: #007bff;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.bot-input button:hover {
+    background: #0056b3;
+}
+
+.typing-indicator {
+    display: none;
+    padding: 10px 15px;
+}
+
+.typing-indicator span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #007bff;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: typing 1s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }

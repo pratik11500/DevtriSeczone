@@ -442,19 +442,20 @@
 
     
 
+
     <!-- Help Bot -->
     <div class="help-bot">
         <button class="bot-toggle" id="bot-toggle">
             <img src="/static/images/bot-icon.jpg" alt="Chat Bot">
         </button>
-        <div class="bot-container" id="bot-container" style="display: none;">
+        <div class="bot-container" id="bot-container">
             <div class="bot-header">
                 <img src="/static/images/bot-icon.jpg" alt="Bot Icon">
                 <span>Help Assistant</span>
                 <button class="close-bot" id="close-bot">&times;</button>
             </div>
             <div class="bot-messages" id="chatbot-messages">
-                <div class="bot-message">Hello! How can I help you today?</div>
+                <div class="bot-message">Hello! How can I assist you today?</div>
             </div>
             <div class="typing-indicator" id="typing-indicator">
                 <span></span>
@@ -467,6 +468,97 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const botToggle = document.getElementById('bot-toggle');
+            const botContainer = document.getElementById('bot-container');
+            const closeBot = document.getElementById('close-bot');
+            const chatInput = document.getElementById('chat-input');
+            const sendButton = document.getElementById('send-message');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const typingIndicator = document.getElementById('typing-indicator');
+
+            let isBotVisible = false;
+
+            function toggleBot() {
+                isBotVisible = !isBotVisible;
+                botContainer.classList.toggle('show', isBotVisible);
+            }
+
+            botToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleBot();
+            });
+
+            closeBot.addEventListener('click', () => toggleBot());
+
+            document.addEventListener('click', function (e) {
+                if (isBotVisible && !botContainer.contains(e.target) && !botToggle.contains(e.target)) {
+                    toggleBot();
+                }
+            });
+
+            function sendMessage(message) {
+                if (!message.trim()) return;
+
+                addMessage(message, true);
+                chatInput.value = '';
+
+                typingIndicator.style.display = "block";
+
+                setTimeout(() => {
+                    typingIndicator.style.display = "none";
+                    respondToMessage(message);
+                }, 1000);
+            }
+
+            function respondToMessage(message) {
+                message = message.toLowerCase();
+
+                let response;
+
+                if (message.includes("phone") || message.includes("contact") || message.includes("number")) {
+                    response = "📞 **Phone No:** +91 78270 50067\n📧 **Email:** info.ds@devtriseczone.com";
+                } 
+                else if (message.includes("address") || message.includes("location") || message.includes("office")) {
+                    response = "📍 **Office Address:** Shop/4, Panchdhapa Apt, Thankar Pada, Kalyan, Kalyan City, Thane, Kalyan, Maharashtra, India, 421301";
+                } 
+                else if (message.includes("services") || message.includes("what do you offer") || message.includes("help")) {
+                    response = "💼 **Our Services:**\n- Security Services\n- IT Security\n- Manpower Solutions\n- Staffing Services\n- Consistency Services\n- Payroll Services";
+                } 
+                else {
+                    response = "🤖 I'm here to help! Ask me about our **contact details, address, or services**.";
+                }
+
+                addMessage(response);
+            }
+
+            function addMessage(message, isUser = false) {
+                const messageElement = document.createElement('div');
+                messageElement.className = isUser ? 'user-message' : 'bot-message';
+
+                if (!isUser) {
+                    messageElement.innerHTML = message.replace(/\n/g, "<br>"); // Support line breaks in bot responses
+                } else {
+                    messageElement.textContent = message;
+                }
+
+                chatbotMessages.appendChild(messageElement);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            sendButton.addEventListener('click', () => sendMessage(chatInput.value));
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage(chatInput.value);
+            });
+
+            // Welcome message
+            addMessage("👋 Hello! How can I assist you today?");
+        });
+
+        
+    </script>
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/917827050067" class="whatsapp-float" target="_blank">
