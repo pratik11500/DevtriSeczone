@@ -519,16 +519,16 @@
                 let response;
 
                 if (message.includes("phone") || message.includes("contact") || message.includes("number")) {
-                    response = "📞 **Phone No:** +91 78270 50067\n📧 **Email:** info.ds@devtriseczone.com";
+                    response = "📞 <u><b>Phone No:</b></u> +91 78270 50067\n📧 <u><b>Email:</u></b> info.ds@devtriseczone.com";
                 } 
                 else if (message.includes("address") || message.includes("location") || message.includes("office")) {
-                    response = "📍 **Office Address:** Shop/4, Panchdhapa Apt, Thankar Pada, Kalyan, Kalyan City, Thane, Kalyan, Maharashtra, India, 421301";
+                    response = "📍 <u><b>Office Address:</u></b> Shop/4, Panchdhapa Apt, Thankar Pada, Kalyan, Kalyan City, Thane, Kalyan, Maharashtra, India, 421301";
                 } 
                 else if (message.includes("services") || message.includes("what do you offer") || message.includes("help")) {
-                    response = "💼 **Our Services:**\n- Security Services\n- IT Security\n- Manpower Solutions\n- Staffing Services\n- Consistency Services\n- Payroll Services";
+                    response = "💼 <u><b>Our Services:</u></b>\n- Security Services\n- IT Security\n- Manpower Solutions\n- Staffing Services\n- Consistency Services\n- Payroll Services";
                 } 
                 else {
-                    response = "🤖 I'm here to help! Ask me about our **contact details, address, or services**.";
+                    response = "🤖 I'm here to help! Ask me about our <u><b>contact details, address, or services</u></b>.";
                 }
 
                 addMessage(response);
