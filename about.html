@@ -14,6 +14,41 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes slideIn {
+          from { 
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideUp {
+          from { 
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to { 
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        :root {
+          --primary: #007bff;
+          --bg: #0e0e12;
+          --sidebar: #16181d;
+          --text: #e0e0e0;
+          --highlight: #ffffff0d;
+          --folder-bg: #1d1f27;
+        }
+        
         .go-back-btn {
             position: fixed;
             top: 100px;
@@ -33,6 +68,193 @@
         }
         body {
             padding-top: 76px;
+        }
+
+        .navbarx {
+          display: flex;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 50px;
+          background: var(--sidebar);
+          color: var(--text);
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 15px;
+          z-index: 10;
+        }
+
+        .navbarx .toggle-btnx {
+          background: none;
+          border: none;
+          font-size: 24px;
+          color: var(--text);
+          cursor: pointer;
+        }
+
+        .sidebarx {
+          width: 260px;
+          background: var(--sidebar);
+          padding: 20px;
+          overflow-y: auto;
+          transition: all 0.3s ease;
+          box-shadow: 2px 0 5px #0004;
+          z-index: 100;
+        }
+
+        .tree ul {
+          list-style: none;
+          padding-left: 20px;
+          margin: 0;
+          position: relative;
+        }
+
+        .tree ul::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 12px;
+          width: 2px;
+          height: 100%;
+          background: #333;
+        }
+
+        .tree li {
+          position: relative;
+          margin: 8px 0;
+          padding-left: 20px;
+          transition: all 0.3s ease;
+        }
+
+        .tree li::before {
+          content: '';
+          position: absolute;
+          top: 12px;
+          left: 0;
+          width: 20px;
+          height: 2px;
+          background: #333;
+        }
+
+        .folder-label {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          padding: 6px 8px;
+          border-radius: 6px;
+          transition: background 0.3s ease;
+          background: var(--folder-bg);
+        }
+
+        .folder-label:hover,
+        .folder.open > .folder-label {
+          background: var(--primary);
+          color: white;
+        }
+
+        .folder-label svg {
+          width: 16px;
+          height: 16px;
+          margin-right: 8px;
+          fill: var(--primary);
+          transition: transform 0.3s ease;
+        }
+
+        .folder.collapsed > ul {
+          display: none;
+        }
+
+        .folder.collapsed .folder-label svg {
+          transform: rotate(-90deg);
+        }
+
+        .tree a {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: var(--text);
+          padding: 5px 10px;
+          border-radius: 4px;
+          transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .tree a::before {
+          content: '';
+          width: 16px;
+          height: 16px;
+          margin-right: 8px;
+          background-size: 16px;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .tree a.pdf::before {
+          background-image: url('data:image/svg+xml;utf8,<svg fill="%23007bff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm1 7H8V8h7v1zm-7 2h10v1H8v-1zm0 3h10v1H8v-1z"/></svg>');
+        }
+
+        .tree a.txt::before {
+          background-image: url('data:image/svg+xml;utf8,<svg fill="%23007bff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM7 7h10v2H7V7zm0 4h6v2H7v-2zm0 4h8v2H7v-2z"/></svg>');
+        }
+
+        .tree a.img::before {
+          background-image: url('data:image/svg+xml;utf8,<svg fill="%23007bff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 13l4.5 6H5l3.5-5.01z"/></svg>');
+        }
+
+        .tree a.work::before {
+          background-image: url('data:image/svg+xml;utf8,<svg fill="%23007bff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 6V4h-4v2H5v14h14V6h-5zm-4-2h4v2h-4V4zm8 16H6V8h12v12z"/></svg>');
+        }
+
+        .tree a:hover,
+        .tree a.active {
+          background: var(--primary);
+          color: #fff;
+        }
+
+        .main {
+          flex: 1;
+          background: #101217;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+          transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+          body {
+            flex-direction: column;
+          }
+
+          .navbarx {
+            display: flex;
+          }
+
+          .sidebarx {
+            position: fixed;
+            left: -100%;
+            height: calc(100vh - 50px);
+            width: 80%;
+            background: var(--sidebar);
+            transition: left 0.3s ease;
+          }
+
+          .sidebarx.open {
+            left: 0;
+          }
+
+          .main {
+            height: calc(100vh - 50px);
+          }
+
+          iframe {
+            height: 100%;
+          }
         }
     </style>
 </head>
@@ -89,5 +311,243 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="/static/js/main.js"></script>
-</body>
-</html>
+
+
+      <div class="navbarx">
+        <div style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <button class="toggle-btnx" onclick="toggleSidebar()" style="font-size: 20px; background: none; border: none; color: white; cursor: pointer;">☰</button>
+            <a href="javascript:history.back()" style="
+              background: rgba(0, 123, 255, 0.2);
+              color: white;
+              padding: 6px 12px;
+              border-radius: 4px;
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              font-size: 14px;
+              transition: all 0.3s ease;
+            ">
+              <i class="fas fa-arrow-left"></i>
+              <span>Back</span>
+            </a>
+          </div>
+          <strong style="
+            margin-left: auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          ">DSPL</strong>
+        </div>
+        <div style="
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -40px;
+          display: flex;
+          gap: 10px;
+          background: rgba(0, 123, 255, 0.1);
+          padding: 8px;
+          border-radius: 8px;
+          backdrop-filter: blur(5px);
+          z-index: 1000;
+        " id="zoom-controls">
+        <style>
+          @media (max-width: 768px) {
+            #zoom-controls {
+              bottom: -60px !important;
+            }
+          }
+        </style>
+          <button onclick="zoomIn()" style="
+            padding: 3px 12px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+          ">Zoom In</button>
+          <span style="color: white; display: flex; align-items: center; font-size: 14px;" id="zoom-level">100%</span>
+          <button onclick="zoomOut()" style="
+            padding: 3px 12px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+          ">Zoom Out</button>
+        </div>
+      </div>
+
+      <div class="sidebarx" id="sidebarx" style="margin-top: 50px;">
+        <div class="tree" style="
+          overflow-x: auto;
+          padding-bottom: 10px;
+        ">
+          <ul>
+            <li class="folder">
+              <div class="folder-label" onclick="toggleFolder(this)">
+                <svg viewBox="0 0 24 24"><path d="M10 4H2v16h20V6H12l-2-2z"/></svg>
+                Folder 1
+              </div>
+              <ul>
+                <li><a class="pdf" href="#" onclick="loadPDF('yourfile.pdf', this)">PDF File</a></li>
+                <li><a class="txt" href="#" onclick="loadPDF('yourfile.txt', this)">Text File</a></li>
+                <li><a class="img" href="#" onclick="loadPDF('yourfile.png', this)">Image File</a></li>
+                <li><a class="work" href="#" onclick="loadPDF('yourfile.docx', this)">Work File</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="main">
+
+
+        <div style="
+          margin: 120px auto 0;
+          width: 90%;
+          height: calc(100vh - 180px);
+          overflow: auto;
+          background: #1a1d24;
+          border-radius: 10px;
+          box-shadow: 0 0 20px rgba(0,0,0,0.3);
+          border: 1px solid rgba(255,255,255,0.1);
+          position: relative;
+        " id="viewer-container">
+          <div style="min-width: 100%; height: 100%; overflow: auto;">
+            <iframe id="pdf-viewer" src="" style="min-width: 100%; height: 100%; transform-origin: top left;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const sidebar = document.getElementById('sidebar');
+        const viewer = document.getElementById('pdf-viewer');
+        const iframeContainer = document.querySelector('.main');
+
+        let zoomLevel = 1;
+
+        function toggleSidebar() {
+          sidebar.classList.toggle('open');
+        }
+
+        function toggleFolder(element) {
+          const folder = element.parentElement;
+          folder.classList.toggle('collapsed');
+        }
+
+        function zoomIn() {
+          if (!viewer.src) return; // Only work when a file is loaded
+          zoomLevel += 0.1;
+          updateZoom();
+        }
+
+        function zoomOut() {
+          if (!viewer.src) return; // Only work when a file is loaded
+          zoomLevel = Math.max(0.1, zoomLevel - 0.1);
+          updateZoom();
+        }
+
+        function updateZoom() {
+          viewer.style.transform = `scale(${zoomLevel})`;
+          viewer.style.width = `${100 * zoomLevel}%`;
+          viewer.style.height = `${100 * zoomLevel}%`;
+          document.getElementById('zoom-level').textContent = `${Math.round(zoomLevel * 100)}%`;
+        }
+
+        function loadPDF(file, linkElement) {
+          const extension = file.split('.').pop().toLowerCase();
+
+          document.querySelectorAll('.tree a').forEach(a => a.classList.remove('active'));
+          if (linkElement) linkElement.classList.add('active');
+
+          viewer.style.opacity = 0;
+          zoomLevel = 1;
+          updateZoom();
+
+          setTimeout(() => {
+            if (['pdf', 'png', 'jpg', 'jpeg', 'txt'].includes(extension)) {
+              viewer.src = file + "#toolbar=0&navpanes=0&scrollbar=0";
+            } else {
+              viewer.srcdoc = `<div style="color:white;text-align:center;padding:20px;font-size:18px;">Preview not available for .${extension} files.</div>`;
+            }
+
+            viewer.onload = () => {
+              viewer.style.opacity = 1;
+            };
+          }, 200);
+
+          if (window.innerWidth <= 768) sidebar.classList.remove('open');
+        }
+
+        // Enable dragging on viewer
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        iframeContainer.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          startX = e.pageX - iframeContainer.offsetLeft;
+          startY = e.pageY - iframeContainer.offsetTop;
+          scrollLeft = iframeContainer.scrollLeft;
+          scrollTop = iframeContainer.scrollTop;
+        });
+
+        iframeContainer.addEventListener('mouseleave', () => isDragging = false);
+        iframeContainer.addEventListener('mouseup', () => isDragging = false);
+        iframeContainer.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          e.preventDefault();
+          const x = e.pageX - iframeContainer.offsetLeft;
+          const y = e.pageY - iframeContainer.offsetTop;
+          const walkX = (x - startX);
+          const walkY = (y - startY);
+          iframeContainer.scrollLeft = scrollLeft - walkX;
+          iframeContainer.scrollTop = scrollTop - walkY;
+        });
+
+        // Mobile pinch zoom support
+        let pinchStartDist = 0;
+        let pinchStartZoom = 1;
+
+        viewer.addEventListener('touchstart', function(e) {
+          if (e.touches.length === 2) {
+            pinchStartDist = Math.hypot(
+              e.touches[0].pageX - e.touches[1].pageX,
+              e.touches[0].pageY - e.touches[1].pageY
+            );
+            pinchStartZoom = zoomLevel;
+          }
+        });
+
+        viewer.addEventListener('touchmove', function(e) {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            const dist = Math.hypot(
+              e.touches[0].pageX - e.touches[1].pageX,
+              e.touches[0].pageY - e.touches[1].pageY
+            );
+            const scale = dist / pinchStartDist;
+            zoomLevel = pinchStartZoom * scale;
+            updateZoom();
+          }
+        }, { passive: false });
+
+        // Ctrl + scroll zoom (desktop)
+        viewer.addEventListener('wheel', function(e) {
+          if (e.ctrlKey) {
+            e.preventDefault();
+            zoomLevel += (e.deltaY < 0 ? 0.05 : -0.05);
+            zoomLevel = Math.max(0.1, zoomLevel);
+            updateZoom();
+          }
+        }, { passive: false });
+
+      </script>
+
+    </body>
+    </html>
