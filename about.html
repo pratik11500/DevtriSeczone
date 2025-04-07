@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +47,7 @@
           --highlight: #ffffff0d;
           --folder-bg: #1d1f27;
         }
-        
+
         .go-back-btn {
             position: fixed;
             top: 100px;
@@ -217,6 +216,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          margin-left: 0; /* Added to prevent unexpected margin */
         }
 
         iframe {
@@ -405,13 +405,13 @@
       </div>
 
 
-      <div class="main">
+      <div class="main" style="flex: 1; margin-left: 0;">
 
 
         <div style="
-          margin: 120px auto 0;
-          width: 90%;
-          height: calc(100vh - 180px);
+          margin: 0;
+          width: 100%;
+          height: 100%;
           overflow: auto;
           background: #1a1d24;
           border-radius: 10px;
