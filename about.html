@@ -323,8 +323,32 @@
             left: -100%;
             height: calc(100vh - 50px);
             width: 80%;
+            max-width: 300px;
             background: var(--sidebar);
-            transition: left 0.3s ease;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+          }
+
+          .mobile-toggle {
+            display: block;
+            position: fixed;
+            left: 20px;
+            top: 60px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 999;
+            cursor: pointer;
+          }
+
+          .mainx {
+            width: 100% !important;
+            left: 0 !important;
+            right: 0 !important;
+            padding: 10px;
           }
 
           .sidebarx.open {
@@ -422,6 +446,9 @@
       </div>
 
       <div class="sidebarx" id="sidebarx" style="margin-top: 70px;">
+        <button class="mobile-toggle" onclick="toggleSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
         <div class="tree" style="
           overflow-x: auto;
           padding: 10px;
@@ -462,7 +489,8 @@
         let zoomLevel = 1;
 
         function toggleSidebar() {
-          sidebar.classList.toggle('open');
+          const sidebar = document.getElementById('sidebarx');
+          sidebar.style.left = sidebar.style.left === '0px' ? '-100%' : '0px';
         }
 
         function toggleFolder(element) {
