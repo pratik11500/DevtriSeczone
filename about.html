@@ -331,7 +331,7 @@
           }
 
           .mobile-toggle {
-            display: block;
+            display: none;
             position: fixed;
             left: 20px;
             top: 60px;
@@ -342,6 +342,12 @@
             border-radius: 5px;
             z-index: 999;
             cursor: pointer;
+          }
+
+          @media (max-width: 768px) {
+            .mobile-toggle {
+              display: block;
+            }
           }
 
           .mainx {
