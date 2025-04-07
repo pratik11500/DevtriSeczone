@@ -472,8 +472,16 @@
           updateZoom();
 
           setTimeout(() => {
-            if (['pdf', 'png', 'jpg', 'jpeg', 'txt'].includes(extension)) {
-              viewer.src = file + "#toolbar=0&navpanes=0&scrollbar=0";
+            if (['pdf'].includes(extension)) {
+              viewer.src = `https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + '/' + file)}&embedded=true`;
+            } else if (['png', 'jpg', 'jpeg'].includes(extension)) {
+              viewer.src = file;
+            } else if (extension === 'txt') {
+              fetch(file)
+                .then(response => response.text())
+                .then(text => {
+                  viewer.srcdoc = `<pre style="color:white;padding:20px;white-space:pre-wrap;">${text}</pre>`;
+                });
             } else {
               viewer.srcdoc = `<div style="color:white;text-align:center;padding:20px;font-size:18px;">Preview not available for .${extension} files.</div>`;
             }
