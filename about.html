@@ -18,6 +18,88 @@
           from { opacity: 0; }
           to { opacity: 1; }
         }
+
+        .navbar-container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          width: 100%;
+          padding: 10px;
+        }
+
+        .navbar-controls {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .back-button {
+          background: rgba(0, 123, 255, 0.2);
+          color: white;
+          padding: 6px 12px;
+          border-radius: 4px;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 14px;
+          transition: all 0.3s ease;
+        }
+
+        .company-title {
+          margin-left: auto;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .zoom-controls {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: -40px;
+          display: flex;
+          gap: 10px;
+          background: rgba(0, 123, 255, 0.1);
+          padding: 8px;
+          border-radius: 8px;
+          backdrop-filter: blur(5px);
+          z-index: 1000;
+        }
+
+        .zoom-button {
+          padding: 3px 12px;
+          border: none;
+          border-radius: 4px;
+          background: #007bff;
+          color: white;
+          cursor: pointer;
+          font-size: 14px;
+        }
+
+        .viewer-container {
+          margin-top: 120px;
+          width: 100%;
+          height: calc(100vh - 50px);
+          overflow: auto;
+          background: #1a1d24;
+          border-radius: 10px;
+          box-shadow: 0 0 20px rgba(0,0,0,0.3);
+          border: 1px solid rgba(255,255,255,0.1);
+          position: relative;
+        }
+
+        .viewer-iframe-container {
+          min-width: 100%;
+          height: 100%;
+          overflow: auto;
+        }
+
+        #pdf-viewer {
+          min-width: 100%;
+          height: 100%;
+          transform-origin: top left;
+        }
         @keyframes slideIn {
           from { 
             opacity: 0;
@@ -315,45 +397,17 @@
 
 
       <div class="navbarx">
-        <div style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <button class="toggle-btnx" onclick="toggleSidebar()" style="font-size: 20px; background: none; border: none; color: white; cursor: pointer;">☰</button>
-            <a href="javascript:history.back()" style="
-              background: rgba(0, 123, 255, 0.2);
-              color: white;
-              padding: 6px 12px;
-              border-radius: 4px;
-              text-decoration: none;
-              display: flex;
-              align-items: center;
-              gap: 5px;
-              font-size: 14px;
-              transition: all 0.3s ease;
-            ">
+        <div class="navbar-container">
+          <div class="navbar-controls">
+            <button class="toggle-btnx" onclick="toggleSidebar()">☰</button>
+            <a href="javascript:history.back()" class="back-button">
               <i class="fas fa-arrow-left"></i>
               <span>Back</span>
             </a>
           </div>
-          <strong style="
-            margin-left: auto;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          ">DSPL</strong>
+          <strong class="company-title">DSPL</strong>
         </div>
-        <div style="
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          bottom: -40px;
-          display: flex;
-          gap: 10px;
-          background: rgba(0, 123, 255, 0.1);
-          padding: 8px;
-          border-radius: 8px;
-          backdrop-filter: blur(5px);
-          z-index: 1000;
-        " id="zoom-controls">
+        <div class="zoom-controls" id="zoom-controls">
         <style>
           @media (max-width: 768px) {
             #zoom-controls {
@@ -361,25 +415,9 @@
             }
           }
         </style>
-          <button onclick="zoomIn()" style="
-            padding: 3px 12px;
-            border: none;
-            border-radius: 4px;
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-          ">Zoom In</button>
+          <button onclick="zoomIn()" class="zoom-button">Zoom In</button>
           <span style="color: white; display: flex; align-items: center; font-size: 14px;" id="zoom-level">100%</span>
-          <button onclick="zoomOut()" style="
-            padding: 3px 12px;
-            border: none;
-            border-radius: 4px;
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-            font-size: 14px;
-          ">Zoom Out</button>
+          <button onclick="zoomOut()" class="zoom-button">Zoom Out</button>
         </div>
       </div>
 
@@ -409,19 +447,9 @@
       <div class="mainx" style="position: absolute; right: 0; top: 50px; width: calc(100% - 260px);">
 
 
-        <div style="
-          margin-top: 120px;
-          width: 100%;
-          height: calc(100vh - 50px);
-          overflow: auto;
-          background: #1a1d24;
-          border-radius: 10px;
-          box-shadow: 0 0 20px rgba(0,0,0,0.3);
-          border: 1px solid rgba(255,255,255,0.1);
-          position: relative;
-        " id="viewer-container">
-          <div style="min-width: 100%; height: 100%; overflow: auto;">
-            <iframe id="pdf-viewer" src="" style="min-width: 100%; height: 100%; transform-origin: top left;"></iframe>
+        <div class="viewer-container" id="viewer-container">
+          <div class="viewer-iframe-container">
+            <iframe id="pdf-viewer" src=""></iframe>
           </div>
         </div>
       </div>
