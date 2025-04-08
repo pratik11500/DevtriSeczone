@@ -238,7 +238,7 @@
           width: 16px;
           height: 16px;
           margin-right: 8px;
-          fill: var(--primary);
+          fill: #fff;
           transition: transform 0.3s ease;
         }
 
@@ -467,18 +467,58 @@
           padding: 10px;
         ">
           <ul>
+
+                <li><a class="pdf" href="#" onclick="loadPDF('Profile_DSPL.pdf', this)">DSPL PROFILE</a></li>
+             
+            
             <li class="folder">
               <div class="folder-label" onclick="toggleFolder(this)">
                 <svg viewBox="0 0 24 24"><path d="M10 4H2v16h20V6H12l-2-2z"/></svg>
-                Folder 1
+                AOA & MOA
               </div>
               <ul>
-                <li><a class="pdf" href="#" onclick="loadPDF('yourfile.pdf', this)">PDF File</a></li>
-                <li><a class="txt" href="#" onclick="loadPDF('yourfile.txt', this)">Text File</a></li>
-                <li><a class="img" href="#" onclick="loadPDF('yourfile.png', this)">Image File</a></li>
-                <li><a class="work" href="#" onclick="loadPDF('yourfile.docx', this)">Work File</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/AOA_&_MOA/Agile.pdf', this)">Agile</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/AOA_&_MOA/INC-9.pdf', this)">INC-9</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/AOA_&_MOA/INC-33.pdf', this)">INC-33</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/AOA_&_MOA/INC-34.pdf', this)">INC-34</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/AOA_&_MOA/Paer-B.pdf', this)">Part-B</a></li>
               </ul>
             </li>
+
+            <li class="folder">
+              <div class="folder-label" onclick="toggleFolder(this)">
+                <svg viewBox="0 0 24 24"><path d="M10 4H2v16h20V6H12l-2-2z"/></svg>
+                ESIC
+              </div>
+              <ul>
+                <li><a class="pdf" href="#" onclick="loadPDF('/ESIC/1.pdf', this)">PDF File</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/ESIC/EPF_Certificate_1.pdf', this)">EPF_Certificate_1</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/ESIC/EPF_Certificate_2.pdf', this)">EPF_Certificate_2</a></li>
+              </ul>
+            </li>
+
+            <li class="folder">
+              <div class="folder-label" onclick="toggleFolder(this)">
+                <svg viewBox="0 0 24 24"><path d="M10 4H2v16h20V6H12l-2-2z"/></svg>
+                GST
+              </div>
+              <ul>
+                <li><a class="pdf" href="#" onclick="loadPDF('/GST/AA061024020767H_RC28102024.pdf', this)">PDF File</a></li>
+              </ul>
+            </li>
+
+            <li class="folder">
+              <div class="folder-label" onclick="toggleFolder(this)">
+                <svg viewBox="0 0 24 24"><path d="M10 4H2v16h20V6H12l-2-2z"/></svg>
+                PAN
+              </div>
+              <ul>
+                <li><a class="pdf" href="#" onclick="loadPDF('/PAN/PAN.pdf', this)">Pan</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/PAN/e-Pan.pdf', this)">e-Pan</a></li>
+                <li><a class="pdf" href="#" onclick="loadPDF('/PAN/E-Pan.pdf', this)">E-Pan</a></li>
+              </ul>
+            </li>
+            
           </ul>
         </div>
       </div>
