@@ -546,10 +546,20 @@
           sidebar.style.left = sidebar.style.left === '0px' ? '-100%' : '0px';
         }
 
-        function toggleFolder(element) {
-          const folder = element.parentElement;
-          folder.classList.toggle('collapsed');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure all folders start closed
+            document.querySelectorAll('.folder').forEach(folder => {
+                folder.classList.add('collapsed');
+            });
+
+            // Add event listener to each folder label to toggle its state on click
+            document.querySelectorAll('.folder-label').forEach(label => {
+                label.addEventListener('click', () => {
+                    const folder = label.parentElement;
+                    folder.classList.toggle('collapsed');
+                });
+            });
+        });
 
         function zoomIn() {
           if (!viewer.src) return; // Only work when a file is loaded
