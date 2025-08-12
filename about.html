@@ -377,30 +377,36 @@
         }
 
         .sidebar-btn {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  position: absolute;      /* Keep it fixed inside sidebar */
+  bottom: 15px;            /* Stick to the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;              /* Adjust size inside sidebar */
+  padding: 12px 15px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
   text-align: center;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
 }
 
 .sidebar-btn:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, #0056b3, #003d80);
+  transform: translateX(-50%) scale(1.05);
 }
 
-/* Mobile responsiveness */
+/* Make it look good on mobile */
 @media (max-width: 768px) {
   .sidebar-btn {
     font-size: 16px;
-    padding: 12px;
+    padding: 14px 18px;
   }
 }
+
 
     </style>
 </head>
@@ -548,7 +554,10 @@
             
           </ul>
 
-            <button class="sidebar-btn">Backend Office</button>
+            <a href="xpratik.vercel.app" target="_blank" rel="noopener noreferrer" class="sidebar-btn">
+  Backend Office
+</a>
+
             
         </div>
       </div>
