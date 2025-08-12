@@ -17,6 +17,10 @@
           from { opacity: 0; }
           to { opacity: 1; }
         }
+        
+        .body {
+        background : var(--sidebar);
+        }
 
         .navbar-container {
           display: flex;
@@ -124,7 +128,7 @@
         :root {
           --primary: #007bff;
           --bg: #0e0e12;
-          --sidebar: #16181d;
+          --sidebar: #101217;
           --text: #e0e0e0;
           --highlight: #ffffff0d;
           --folder-bg: #1d1f27;
@@ -181,12 +185,12 @@
           padding: 20px;
           overflow-y: auto;
           transition: all 0.3s ease;
-          box-shadow: 2px 0 5px #0004;
           z-index: 100;
         }
 
         .tree {
             position: relative;
+            height : 300px;
         }
         
         .tree ul {
@@ -382,12 +386,10 @@
         }
 
  .sidebar-btn {
-  top: 180%;
   position: absolute;  
   display: block;
-  width: 100%;
+  width: 150px;
   padding: 10px;
-  margin-top: 10px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -395,6 +397,7 @@
   cursor: pointer;
   font-size: 14px;
   border-radius: 4px;
+  top: 30px;
 }
 
 .sidebar-btn:hover {
@@ -412,7 +415,7 @@
 
     </style>
 </head>
-<body>
+<body style="background: #101217;">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -551,16 +554,11 @@
                 <li><a class="pdf" href="#" onclick="loadPDF('/PAN/E-Pan.pdf', this)">E-Pan</a></li>
               </ul>
             </li>
-
-
-              <ul>
-                  
-              <a href="https://drive.google.com/" target="_blank" rel="noopener noreferrer" class="sidebar-btn">
+            <ul><a href="https://drive.google.com/" target="_blank" rel="noopener noreferrer" class="sidebar-btn">
   Backend Office
-</a>
+</a></ul>
           </ul>
-            
-          </ul>
+       
         </div>
       </div>
 
