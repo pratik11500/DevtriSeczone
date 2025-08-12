@@ -375,6 +375,33 @@
             margin-right: 10px;
           }
         }
+
+        .sidebar-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.sidebar-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .sidebar-btn {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -520,6 +547,9 @@
             </li>
             
           </ul>
+
+            <button class="sidebar-btn">Backend Office</button>
+            
         </div>
       </div>
 
