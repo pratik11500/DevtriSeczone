@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 entrypoint = "index.html"
 modules = ["web"]
 
 [nix]
 channel = "stable-24_11"
 packages = ["static-web-server"]
+=======
+hidden=[".config"]
+modules = ["web", "nodejs-20"]
+run = "npm run start"
+
+[nix]
+channel = "stable-24_05"
+>>>>>>> e6b56bc8b65178d83d35ed963ed6cdcd93228aab
 
 [deployment]
 publicDir = "/"
 deploymentTarget = "static"
+run = ["sh", "-c", "npm run start"]
 
 [workflows]
 runButton = "Serve static"

@@ -84,19 +84,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Contact toggle functionality
-  const contactToggle = document.querySelector(".contact-toggle");
-  const contactOptions = document.querySelector(".contact-options");
+  // Contact toggle behavior
+  const contactButton = document.getElementById('contact-button');
+  const contactForm = document.getElementById('contact-form');
+  const overlay = document.getElementById('overlay');
 
-  if (contactToggle) {
-    contactToggle.addEventListener("mouseenter", function () {
-      contactOptions.classList.add("show");
-    });
-
-    contactToggle.addEventListener("mouseleave", function () {
-      contactOptions.classList.remove("show");
+  if (contactButton) {
+    contactButton.addEventListener('click', function() {
+      contactForm.style.right = contactForm.style.right === '0px' ? '-350px' : '0px';
+      overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
     });
   }
+
+  if (overlay) {
+    overlay.addEventListener('click', function() {
+      contactForm.style.right = '-350px';
+      overlay.style.display = 'none';
+    });
+  }
+
 
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -113,9 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Form validation
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
+  const contactForm2 = document.getElementById("contactForm");
+  if (contactForm2) {
+    contactForm2.addEventListener("submit", function (e) {
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
@@ -146,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       const submitButton = this.querySelector('button[type="submit"]');
       submitButton.disabled = true;
-      
+
       const formData = {
         name: this.querySelector('[name="name"]').value.trim(),
         email: this.querySelector('[name="email"]').value.trim(),
@@ -211,6 +217,59 @@ document.addEventListener("DOMContentLoaded", function () {
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
+
+  const chatInput = document.getElementById('chat-input');
+  const sendButton = document.getElementById('send-message');
+  const chatbotMessages = document.getElementById('chatbot-messages');
+  const typingIndicator = document.getElementById('typing-indicator');
+
+  async function sendMessage(message) {
+    if (!message.trim()) return;
+
+    addMessage(message, true);
+    typingIndicator.style.display = "block";
+    chatInput.value = '';
+
+    try {
+        const response = await fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+        typingIndicator.style.display = "none";
+
+        if (data.reply) {
+            addMessage(data.reply);
+        } else {
+            addMessage("Sorry, I couldn't process your request.");
+        }
+    } catch (error) {
+        console.error('Chat error:', error);
+        typingIndicator.style.display = "none";
+        addMessage("Sorry, there was an error processing your message.");
+    }
+  }
+
+  sendButton.addEventListener('click', () => sendMessage(chatInput.value));
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendMessage(chatInput.value);
+    }
+  });
+
+  function addMessage(message,isUser){
+    const messageElement = document.createElement('div');
+    messageElement.className = isUser ? 'user-message' : 'bot-message';
+    messageElement.textContent = message;
+    chatbotMessages.appendChild(messageElement);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+
 });
 
 // Slideshow functionality
@@ -258,4 +317,3 @@ if ('IntersectionObserver' in window) {
         imageObserver.observe(img);
     });
 }
-
