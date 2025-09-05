@@ -4,10 +4,8 @@
   "description": "Corporate website for Devtri Seczone Private Limited with reviews system",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'Static site - no build required'",
-    "start": "node server.js",
-    "dev": "python -m http.server 5000",
-    "vercel-build": "echo 'Static deployment - no build step needed'"
+    "build": "echo 'Build complete'",
+    "dev": "python -m http.server 5000"
   },
   "keywords": [
     "security-services",
@@ -16,15 +14,5 @@
     "reviews-system"
   ],
   "author": "Devtri Seczone Private Limited",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.20.3",
-    "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "openai": "^4.91.1",
-    "pg": "^8.14.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  }
+  "license": "ISC"
 }
