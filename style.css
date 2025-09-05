@@ -424,7 +424,7 @@ body {
 .team-section,
 .about,
 .contact,
-.blogs {
+.reviews {
   background-color: var(--dark-bg);
   color: var(--light-text);
   border-top: 1px solid rgba(0, 123, 255, 0.1);
@@ -442,20 +442,101 @@ body {
 }
 
 /* Dark themed cards */
-.blog-card,
+.review-card,
 .team-card,
 .service-card {
   background: var(--card-bg);
   border: 1px solid rgba(0, 123, 255, 0.1);
   transition: all 0.4s ease;
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  height: 100%;
 }
 
-.blog-card:hover,
+.review-card:hover,
 .team-card:hover,
 .service-card:hover {
   border-color: var(--primary-color);
   transform: translateY(-10px);
   box-shadow: 0 8px 25px rgba(0, 123, 255, 0.2);
+}
+
+/* Review specific styles */
+.review-card .user-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.review-card .user-name {
+  color: var(--light-text);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.review-card .user-feedback {
+  color: var(--light-text);
+  opacity: 0.9;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  min-height: 60px;
+  line-height: 1.4;
+}
+
+.review-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.like-section {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.like-btn, .dislike-btn {
+  background: none;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.like-btn:hover, .dislike-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.like-btn.active {
+  background: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.dislike-btn.active {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+
+.star-rating .stars {
+  color: #ffc107;
+  font-size: 1.1rem;
+}
+
+.star-rating .fas.fa-star {
+  color: #ffc107;
+}
+
+.star-rating .far.fa-star {
+  color: #6c757d;
 }
 
 .service-card {
@@ -648,16 +729,31 @@ body {
     font-size: 0.9rem;
   }
 
-  .blog-card {
+  .review-card {
     margin-bottom: 1rem;
+    padding: 1rem;
   }
 
-  .blog-card h4 {
+  .review-card .user-icon {
+    font-size: 2rem;
+  }
+
+  .review-card .user-name {
     font-size: 1rem;
   }
 
-  .blog-card p {
+  .review-card .user-feedback {
     font-size: 0.85rem;
+    min-height: auto;
+  }
+  
+  .review-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .like-section {
+    justify-content: center;
   }
 
   .contact-info {

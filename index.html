@@ -297,43 +297,244 @@
     </div>
 </section>
 
-<!-- Blogs Section -->
-<section id="blogs" class="blogs py-5">
+<!-- Reviews Section -->
+<section id="reviews" class="reviews py-5">
     <div class="container">
-        <h2 class="text-center">Our <span class="text-primary">Blogs</span></h2>
-        <div class="row mt-5">
+        <h2 class="text-center">Customer <span class="text-primary">Reviews</span></h2>
+        <div class="row mt-5" id="reviews-container">
             <div class="col-md-3 mb-4">
-                <div class="blog-card">
-                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd" loading="lazy" alt="Delhi Blog" class="img-fluid mb-3">
-                    <h4>Manpower Supply Company in Delhi</h4>
-                    <p>As the central economic powerhouse of India Delhi maintains various industrial establishments with businesses and corporate organizations functioning ...</p>
-                    <a href="#" class="btn btn-dark">READ MORE FOR DETAILS</a>
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Rajesh Kumar</h5>
+                    <p class="user-feedback">"Excellent security services! Their team is professional and reliable. Highly recommended for any security needs."</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="1" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>45</span>
+                            </button>
+                            <button class="dislike-btn" data-review="1" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>2</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 mb-4">
-                <div class="blog-card">
-                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd" loading="lazy" alt="Ghaziabad Blog" class="img-fluid mb-3">
-                    <h4>Manpower Consultancy in Delhi NCR</h4>
-                    <p>Delhi NCR, an important industrial hub in the National Capital Region (NCR), buzzes with factories, transportation, and a booming service industry...</p>
-                    <a href="#" class="btn btn-dark">READ MORE FOR DETAILS</a>
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Priya Sharma</h5>
+                    <p class="user-feedback">"Outstanding manpower solutions. They provided skilled workers exactly when we needed them. Great service quality!"</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="2" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>38</span>
+                            </button>
+                            <button class="dislike-btn" data-review="2" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>1</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 mb-4">
-                <div class="blog-card">
-                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd" loading="lazy" alt="Noida Blog" class="img-fluid mb-3">
-                    <h4>Manpower Outsourcing Company in Noida</h4>
-                    <p>Noida exists as a rapidly growing industrial and commercial center that attracts stable enterprises and entrepreneurial ventures. The active business...</p>
-                    <a href="#" class="btn btn-dark">READ MORE FOR DETAILS</a>
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Amit Singh</h5>
+                    <p class="user-feedback">"Professional IT security services. Their CCTV installation was seamless and the monitoring system works perfectly."</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="3" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>52</span>
+                            </button>
+                            <button class="dislike-btn" data-review="3" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>0</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3 mb-4">
-                <div class="blog-card">
-                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd" class="img-fluid mb-3">
-                    <h4>Manpower Services in Faridabad</h4>
-                    <p>The industrial center of Haryana which is Faridabad has experienced quick economic growth in recent years which leads to the great need for Manpower...</p>
-                    <a href="#" class="btn btn-dark">READ MORE FOR DETAILS</a>
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Neha Gupta</h5>
+                    <p class="user-feedback">"Reliable staffing services. They helped us find the right candidates quickly. Very satisfied with their service."</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="4" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>41</span>
+                            </button>
+                            <button class="dislike-btn" data-review="4" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>3</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Hidden Reviews (for "See More" functionality) -->
+        <div class="row mt-3" id="hidden-reviews" style="display: none;">
+            <div class="col-md-3 mb-4">
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Vikash Pandey</h5>
+                    <p class="user-feedback">"Great payroll services! Their team handles all our payroll needs efficiently. Very professional approach."</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="5" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>29</span>
+                            </button>
+                            <button class="dislike-btn" data-review="5" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>1</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Anjali Verma</h5>
+                    <p class="user-feedback">"Top-notch consistency in service delivery. They maintain high standards across all their service offerings."</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="6" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>35</span>
+                            </button>
+                            <button class="dislike-btn" data-review="6" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>0</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Ravi Khandelwal</h5>
+                    <p class="user-feedback">"Excellent security guards provided for our office premises. Professional, punctual, and very reliable team."</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="7" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>48</span>
+                            </button>
+                            <button class="dislike-btn" data-review="7" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>2</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="review-card">
+                    <div class="user-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h5 class="user-name">Sunita Agarwal</h5>
+                    <p class="user-feedback">"Outstanding manpower solutions for our factory. They provided skilled workers who integrated well with our team."</p>
+                    <div class="review-actions">
+                        <div class="like-section">
+                            <button class="like-btn" data-review="8" data-type="like">
+                                <i class="fas fa-thumbs-up"></i> <span>43</span>
+                            </button>
+                            <button class="dislike-btn" data-review="8" data-type="dislike">
+                                <i class="fas fa-thumbs-down"></i> <span>1</span>
+                            </button>
+                        </div>
+                        <div class="star-rating">
+                            <span class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <button id="see-more-btn" class="btn btn-primary">See More Reviews</button>
+            <button id="see-less-btn" class="btn btn-secondary" style="display: none;">See Less</button>
         </div>
     </div>
 </section>
@@ -440,6 +641,81 @@
     </div>
 
     <script>
+        // Reviews functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // See More/Less Reviews functionality
+            const seeMoreBtn = document.getElementById('see-more-btn');
+            const seeLessBtn = document.getElementById('see-less-btn');
+            const hiddenReviews = document.getElementById('hidden-reviews');
+            
+            if (seeMoreBtn) {
+                seeMoreBtn.addEventListener('click', function() {
+                    hiddenReviews.style.display = 'block';
+                    seeMoreBtn.style.display = 'none';
+                    seeLessBtn.style.display = 'inline-block';
+                });
+            }
+            
+            if (seeLessBtn) {
+                seeLessBtn.addEventListener('click', function() {
+                    hiddenReviews.style.display = 'none';
+                    seeMoreBtn.style.display = 'inline-block';
+                    seeLessBtn.style.display = 'none';
+                    
+                    // Scroll back to reviews section
+                    document.getElementById('reviews').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            
+            // Like/Dislike functionality
+            document.querySelectorAll('.like-btn, .dislike-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const reviewId = this.getAttribute('data-review');
+                    const type = this.getAttribute('data-type');
+                    const isActive = this.classList.contains('active');
+                    
+                    // Remove active class from both buttons for this review
+                    const reviewButtons = document.querySelectorAll(`[data-review="${reviewId}"]`);
+                    reviewButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    if (!isActive) {
+                        // Add active class to clicked button
+                        this.classList.add('active');
+                        
+                        // Update count
+                        const countSpan = this.querySelector('span');
+                        let currentCount = parseInt(countSpan.textContent);
+                        
+                        if (type === 'like') {
+                            countSpan.textContent = currentCount + 1;
+                            // Decrease dislike count if it was previously active
+                            const dislikeBtn = document.querySelector(`[data-review="${reviewId}"][data-type="dislike"]`);
+                            const dislikeCount = dislikeBtn.querySelector('span');
+                            if (parseInt(dislikeCount.textContent) > 0) {
+                                dislikeCount.textContent = parseInt(dislikeCount.textContent) - 1;
+                            }
+                        } else {
+                            countSpan.textContent = currentCount + 1;
+                            // Decrease like count if it was previously active
+                            const likeBtn = document.querySelector(`[data-review="${reviewId}"][data-type="like"]`);
+                            const likeCount = likeBtn.querySelector('span');
+                            if (parseInt(likeCount.textContent) > 0) {
+                                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Check for deleted reviews (from admin panel)
+            document.querySelectorAll('.review-card').forEach(card => {
+                const reviewId = card.querySelector('.like-btn').getAttribute('data-review');
+                if (localStorage.getItem(`deleted_review_${reviewId}`) === 'true') {
+                    card.parentElement.style.display = 'none';
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
             const botToggle = document.getElementById('bot-toggle');
             const botContainer = document.getElementById('bot-container');
